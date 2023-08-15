@@ -10,10 +10,13 @@ fan_length = 62;
 wall_strength = 4;
 base_margin = 30;
 base_height = 3;
-hole_margin = 5;
+base_chamfer = 5;
+hole_margin = 5.5;
 hole_d = 5;
 
-$fn = 100;
+$fn = 15;
+
+include <../BOSL2/std.scad>
 
 module body() {
   hull() {
@@ -34,7 +37,22 @@ difference() {
 
     // base plate
     translate([0, 0, -fan_height / 2 + base_height / 2])
+    difference() {
       cube([fan_width + base_margin, fan_length + base_margin, base_height], center = true);
+
+      // base plate chamfers
+      translate([fan_width / 2 + base_margin / 2, fan_length / 2 + base_margin / 2, -base_height / 2])
+        rotate([0,0,180])
+          rounding_edge_mask(l=base_height, r=base_chamfer, orient=UP, anchor=BOTTOM);
+      translate([fan_width / 2 + base_margin / 2, -fan_length / 2 - base_margin / 2, -base_height / 2])
+        rotate([0,0,90])
+          rounding_edge_mask(l=base_height, r=base_chamfer, orient=UP, anchor=BOTTOM);
+      translate([-fan_width / 2 - base_margin / 2, fan_length / 2 + base_margin / 2, -base_height / 2])
+        rotate([0,0,270])
+          rounding_edge_mask(l=base_height, r=base_chamfer, orient=UP, anchor=BOTTOM);
+      translate([-fan_width / 2 - base_margin / 2, -fan_length / 2 - base_margin / 2, -base_height / 2])
+        rounding_edge_mask(l=base_height, r=base_chamfer, orient=UP, anchor=BOTTOM);
+    }
   }
 
   body();

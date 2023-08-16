@@ -2,19 +2,19 @@ pipe_inner_d = 18;
 pipe_height = 20;
 
 funnel_height = 40;
+body_fillet_r = 5;
 
 fan_height = 15;
 fan_width = 62;
 fan_length = 62;
 
-wall_strength = 4;
 base_margin = 30;
 base_height = 3;
 base_fillet_r = 5;
 hole_margin = 6;
 hole_d = 5;
 
-$fn = 15;
+$fn = 30;
 
 include <../BOSL2/std.scad>
 
@@ -40,7 +40,7 @@ module filleted_cube(size, should_fillet = true, fillet_r) {
 
 module body(should_fillet) {
   hull() {
-    filleted_cube([fan_width, fan_length, fan_height], should_fillet = should_fillet, fillet_r = 5);
+    filleted_cube([fan_width, fan_length, fan_height], should_fillet = should_fillet, fillet_r = body_fillet_r);
 
     translate([0, 0, fan_height + funnel_height])
       cylinder(h = 0.1, d = pipe_inner_d);

@@ -1,16 +1,16 @@
 pipe_inner_d = 19.5;
 pipe_height = 20;
 
-funnel_height = 40;
-body_fillet_r = 5;
+funnel_height = 20;
 
+fan_outer_fillet_r = 3;
 fan_height = 15;
 fan_width = 61;
 fan_length = 61;
 
 base_margin = 30;
 base_height = 3;
-base_fillet_r = 5;
+base_fillet_r = 1;
 hole_margin = 6;
 hole_d = 5;
 
@@ -18,29 +18,13 @@ $fn = 30;
 
 include <../BOSL2/std.scad>
 
-module filleted_cube(size, should_fillet = true, fillet_r) {
-  difference() {
-    cube(size, center = true);
-
-    if (should_fillet) {
-      translate([-size.x / 2, -size.y / 2, -size.z / 2])
-        rounding_edge_mask(l = size.z, r = fillet_r, orient = UP, anchor = BOTTOM);
-      translate([size.x / 2, -size.y / 2, -size.z / 2])
-        rotate([0,0,90])
-          rounding_edge_mask(l = size.z, r = fillet_r, orient = UP, anchor = BOTTOM);
-      translate([size.x / 2, size.y / 2, -size.z / 2])
-        rotate([0,0,180])
-          rounding_edge_mask(l = size.z, r = fillet_r, orient = UP, anchor = BOTTOM);
-      translate([-size.x / 2, size.y / 2, -size.z / 2])
-        rotate([0,0,270])
-          rounding_edge_mask(l = size.z, r = fillet_r, orient = UP, anchor = BOTTOM);
-    }
-  }
-}
-
 module body(should_fillet) {
   hull() {
-    filleted_cube([fan_width, fan_length, fan_height], should_fillet = should_fillet, fillet_r = body_fillet_r);
+    if (should_fillet) {
+      cuboid([fan_width, fan_length, fan_height], rounding = fan_outer_fillet_r);
+    } else {
+      cube([fan_width, fan_length, fan_height], center = true);
+    }
 
     translate([0, 0, fan_height + funnel_height])
       cylinder(h = 0.1, d = pipe_inner_d);
@@ -57,7 +41,7 @@ difference() {
 
     // base plate
     translate([0, 0, -fan_height / 2 + base_height / 2])
-      filleted_cube([fan_width + base_margin, fan_length + base_margin, base_height], fillet_r = base_fillet_r);
+      cuboid([fan_width + base_margin, fan_length + base_margin, base_height], rounding = base_fillet_r, edges=[TOP]);
   }
 
   // the inner cutout should not be filleted as we want straight

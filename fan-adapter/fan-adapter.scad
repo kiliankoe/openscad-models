@@ -1,12 +1,12 @@
-pipe_inner_d = 18;
+pipe_inner_d = 19.5;
 pipe_height = 20;
 
 funnel_height = 40;
 body_fillet_r = 5;
 
 fan_height = 15;
-fan_width = 62;
-fan_length = 62;
+fan_width = 61;
+fan_length = 61;
 
 base_margin = 30;
 base_height = 3;

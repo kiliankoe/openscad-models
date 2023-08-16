@@ -57,7 +57,7 @@ difference() {
 
     // base plate
     translate([0, 0, -fan_height / 2 + base_height / 2])
-    filleted_cube([fan_width + base_margin, fan_length + base_margin, base_height], fillet_r = base_fillet_r);
+      filleted_cube([fan_width + base_margin, fan_length + base_margin, base_height], fillet_r = base_fillet_r);
   }
 
   // the inner cutout should not be filleted as we want straight

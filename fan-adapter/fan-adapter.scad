@@ -14,7 +14,7 @@ base_fillet_r = 5;
 hole_margin = 6;
 hole_d = 5;
 
-$fn = 30;
+$fn = 60;
 
 include <../BOSL2/std.scad>
 

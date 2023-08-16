@@ -14,5 +14,3 @@ All measurements are customizable, here's some examples for possible custom desi
   <img src="./custom2.png" width="300px" />
   <img src="./custom3.png" width="300px" />
 </p>
-
-<img src="./plan.png" />

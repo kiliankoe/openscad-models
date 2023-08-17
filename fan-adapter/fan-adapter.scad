@@ -18,38 +18,6 @@ $fn = 60;
 
 include <../BOSL2/std.scad>
 
-module filleted_cube(size, should_fillet = true, fillet_r) {
-  difference() {
-    cube(size, center = true);
-
-    if (should_fillet) {
-      translate([-size.x / 2, -size.y / 2, -size.z / 2])
-        rounding_edge_mask(
-          l = size.z, r = fillet_r, 
-          orient = UP, anchor = BOTTOM
-        );
-      translate([size.x / 2, -size.y / 2, -size.z / 2])
-        rotate([0,0,90])
-          rounding_edge_mask(
-            l = size.z, r = fillet_r, 
-            orient = UP, anchor = BOTTOM
-          );
-      translate([size.x / 2, size.y / 2, -size.z / 2])
-        rotate([0,0,180])
-          rounding_edge_mask(
-            l = size.z, r = fillet_r, 
-            orient = UP, anchor = BOTTOM
-          );
-      translate([-size.x / 2, size.y / 2, -size.z / 2])
-        rotate([0,0,270])
-          rounding_edge_mask(
-            l = size.z, r = fillet_r, 
-            orient = UP, anchor = BOTTOM
-          );
-    }
-  }
-}
-
 module body(should_fillet) {
   hull() {
     if (should_fillet) {
@@ -77,9 +45,10 @@ difference() {
 
     // base plate
     translate([0, 0, -fan_height / 2 + base_height / 2])
-      filleted_cube(
+      cuboid(
         [fan_width + base_margin, fan_length + base_margin, base_height], 
-        fillet_r = base_fillet_r
+        rounding = base_fillet_r,
+        edges = [FRONT+RIGHT, RIGHT+BACK, BACK+LEFT, LEFT+FRONT]
       );
   }
 

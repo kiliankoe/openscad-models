@@ -2,6 +2,7 @@ pipe_inner_d = 19.5;
 pipe_height = 20;
 
 funnel_height = 20;
+funnel_wall_factor = 1.2;
 
 fan_outer_fillet_r = 3;
 fan_height = 15;
@@ -40,7 +41,7 @@ module body(should_fillet) {
 
 difference() {
   union() {
-    scale([1.2, 1.2, 1])
+    scale([funnel_wall_factor, funnel_wall_factor, 1])
       body(should_fillet = true);
 
     // base plate

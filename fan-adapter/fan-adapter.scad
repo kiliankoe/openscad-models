@@ -55,7 +55,8 @@ module body(should_fillet) {
     if (should_fillet) {
       cuboid(
         [fan_width, fan_length, fan_height], 
-        rounding = fan_outer_fillet_r
+        rounding = fan_outer_fillet_r,
+        edges = [FRONT+RIGHT, RIGHT+BACK, BACK+LEFT, LEFT+FRONT]
       );
     } else {
       cube([fan_width, fan_length, fan_height], center = true);

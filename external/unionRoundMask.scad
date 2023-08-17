@@ -27,6 +27,8 @@
             in a single convex area
      2. Radius is of elliptic type and is only approximate r
             were operand intersect at perpendicular angle. 
+
+    https://openscadsnippetpad.blogspot.com/2021/08/openscad-unionround-module.html
     */
     //////////////////////////////////////////////////////// 
     // Demo code

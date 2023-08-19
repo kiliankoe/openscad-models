@@ -23,7 +23,7 @@ module body(should_fillet) {
   hull() {
     if (should_fillet) {
       cuboid(
-        [fan_width, fan_length, fan_height], 
+        [fan_width, fan_length, fan_height],
         rounding = fan_outer_fillet_r,
         edges = [FRONT+RIGHT, RIGHT+BACK, BACK+LEFT, LEFT+FRONT]
       );
@@ -47,7 +47,7 @@ difference() {
     // base plate
     translate([0, 0, -fan_height / 2 + base_height / 2])
       cuboid(
-        [fan_width + base_margin, fan_length + base_margin, base_height], 
+        [fan_width + base_margin, fan_length + base_margin, base_height],
         rounding = base_fillet_r,
         edges = [FRONT+RIGHT, RIGHT+BACK, BACK+LEFT, LEFT+FRONT]
       );
@@ -59,11 +59,11 @@ difference() {
 
   // screw holes
   x_values = [
-    fan_width / 2 + base_margin / 2 - hole_margin, 
+    fan_width / 2 + base_margin / 2 - hole_margin,
     -fan_width / 2 - base_margin / 2 + hole_margin
   ];
   y_values = [
-    fan_length / 2 + base_margin / 2 - hole_margin, 
+    fan_length / 2 + base_margin / 2 - hole_margin,
     -fan_length / 2 - base_margin / 2 + hole_margin
   ];
   for (x = x_values, y = y_values) {

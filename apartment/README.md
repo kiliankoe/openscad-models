@@ -9,4 +9,6 @@ Simplified models of furniture in my apartment to try out possible rearrangement
   <img src="./scratching_post.png" width="400px" />
   <img src="./couch.png" width="400px" />
   <img src="./tv.png" width="400px" />
+  <img src="./rowing_machine.png" width="400px" />
+  <img src="./pc.png" width="400px" />
 </p>

@@ -44,11 +44,11 @@ module cover() {
     translate([0, 0, base_height + side_cutout_height / 2])
       cube([case_width, side_cutout_width, side_cutout_height], true);
 
-    translate([8, 0, case_height - top_wall_thickness / 2])
+    translate([12, 0, case_height - top_wall_thickness / 2])
       cube([display_width, display_height, top_wall_thickness], true);
 
-    translate([-27, 0, case_height - top_wall_thickness / 2])
-      cylinder(d=top_wall_thickness, switch_d, center = true);
+    translate([-25, 0, case_height - top_wall_thickness / 2])
+      cylinder(d=switch_d, h=top_wall_thickness, center = true);
   }
 }
 

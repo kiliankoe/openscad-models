@@ -1,18 +1,18 @@
 case_width = 80;
 case_length = 36;
 case_height = 35;
-case_rounding = 3;
+case_rounding = 2;
 
 wall_thickness = 5;
 
-base_margin = 7;
+base_margin = 6;
 base_height = 3;
-base_fillet_r = 4;
-hole_margin = 1.8;
+base_fillet_r = 2;
+hole_margin = 1;
 hole_d = 4;
 
 display_width = 45;
-display_height = 26;
+display_height = 27;
 
 switch_d = 20;
 
